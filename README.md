@@ -80,7 +80,7 @@ docker stop safecoind
 ```
 
 #### Keep the container up-to-date with systemd service
-:warning: **THIS IS AN EXPERIMENTAL FEATURE, BE SURE TO HAVE A BACKUP OF YOUR WALLETS AND THE WILL TO FIGHT AGAINST BUGS**
+:warning: THIS IS AN EXPERIMENTAL FEATURE, BE SURE TO HAVE A BACKUP OF YOUR WALLETS AND THE WILL TO FIGHT AGAINST BUGS
 
 You can enable a systemd service that will pull the latest image from our repositories at every boot. If it's not your first SafeNode container or you changed the name of the container/volume, do:
 ```
