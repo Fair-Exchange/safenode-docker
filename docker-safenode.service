@@ -1,0 +1,28 @@
+[Unit]
+Description=SafeNode Docker Container
+Documentation=https://github.com/fair-exchange/safenode-docker/
+Requires=docker.service
+After=docker.service
+
+[Service]
+RestartSec=10
+Restart=always
+
+Environment="NAME=safenode"
+Environment="VOL=safenode-data"
+
+# Clean-up bad state if still hanging around
+ExecStartPre=-/usr/bin/docker rm -f $NAME
+
+# Attempt to pull new image for security updates
+ExecStartPre=-/usr/bin/docker pull fair-exchange/safenode
+
+# Main process
+ExecStart=docker run --rm -v $VOL:/safenode --name=$NAME -d fair-exchange/safenode
+
+ExecStop=-docker kill --signal=SIGTERM safecoind
+
+TimeoutStopSec=180
+
+[Install]
+WantedBy=multi-user.target
