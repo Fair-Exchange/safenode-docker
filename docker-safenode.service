@@ -1,6 +1,6 @@
 [Unit]
 Description=SafeNode Docker Container
-Documentation=https://github.com/fair-exchange/safenode-docker/
+Documentation=https://github.com/Fair-Exchange/safenode-docker/
 Requires=docker.service
 After=docker.service
 
@@ -15,10 +15,10 @@ Environment="VOL=safenode-data"
 ExecStartPre=-/usr/bin/docker rm -f $NAME
 
 # Attempt to pull new image for security updates
-ExecStartPre=-/usr/bin/docker pull fair-exchange/safenode
+ExecStartPre=-/usr/bin/docker pull safecoin/safenode
 
 # Main process
-ExecStart=docker run --rm -v $VOL:/safenode --name=$NAME -d fair-exchange/safenode
+ExecStart=docker run --rm -v $VOL:/safenode --name=$NAME -d safecoin/safenode
 
 ExecStop=-docker kill --signal=SIGTERM safecoind
 

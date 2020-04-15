@@ -16,7 +16,7 @@ curl https://raw.githubusercontent.com/Fair-Exchange/safenode-docker/master/boos
 Be sure to have at least 3GB free (RAM+SWAP) for your SafeNode container, then run:
 ```
 docker volume create --name safenode-data
-docker run --restart always -v safenode-data:/safenode --name=safenode -d fair-exchange/safenode
+docker run --restart always -v safenode-data:/safenode --name=safenode -d safecoin/safenode
 ```
 
 ### Build from sources (expert users)
@@ -99,7 +99,7 @@ Note that if you used `sed`, you have to change `docker-safenode.service` with `
 You can, but you will have to create containers following the [manual setup](#Manual-setup) and **creating a volume with a different name for each node**. For example you can run a second node with:
 ```
 docker volume create --name safenode2-data
-docker run -v safenode2-data:/safenode --name=safenode2 -d fair-exchange/safenode
+docker run -v safenode2-data:/safenode --name=safenode2 -d safecoin/safenode
 ```
 Note how `safenode-data` is now `safenode2-data` in both commands. Also the container name has been changed so you can easily identify the right container id.
 

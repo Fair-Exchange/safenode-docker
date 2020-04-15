@@ -29,7 +29,7 @@ if [ $(docker volume ls -f name=safenode | wc -l) -ge 2 ]; then
 fi
 
 docker volume create --name=safenode-data
-docker run --restart always -v safenode-data:/safenode --name=safenode -d fair-exchange/safenode
+docker run --restart always -v safenode-data:/safenode --name=safenode -d safecoin/safenode
 
 echo "=== Container is running ==="
 echo "Follow these steps to end configuration: https://github.com/Fair-Exchange/safenode-docker/#Configure-the-container"
