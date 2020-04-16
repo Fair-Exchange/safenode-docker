@@ -39,5 +39,6 @@ COPY setup-safenode.sh /usr/bin/setup-safenode.sh
 COPY docker-entrypoint.sh /usr/bin/docker-entrypoint.sh
 
 EXPOSE 8770
+EXPOSE 8771
 
 CMD ["docker-entrypoint.sh"]
