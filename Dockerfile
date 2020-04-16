@@ -38,4 +38,6 @@ RUN apt-get update && \
 COPY setup-safenode.sh /usr/bin/setup-safenode.sh
 COPY docker-entrypoint.sh /usr/bin/docker-entrypoint.sh
 
+EXPOSE 8770
+
 CMD ["docker-entrypoint.sh"]

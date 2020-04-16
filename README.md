@@ -18,7 +18,7 @@ curl https://raw.githubusercontent.com/Fair-Exchange/safenode-docker/master/boos
 Be sure to have at least 3GB free (RAM+SWAP) for your SafeNode container, then run:
 ```
 docker volume create --name safenode-data
-docker run --restart always -v safenode-data:/safenode --name=safenode -d safecoin/safenode
+docker run --restart always -p 8770:8770 -v safenode-data:/safenode --name=safenode -d safecoin/safenode
 ```
 
 ### Build from sources (expert users)
@@ -28,7 +28,7 @@ cd safenode-docker-master/
 docker build --tag safenode:manualbuild .
 
 docker volume create --name safenode-data
-docker run --restart always -v safenode-data:/safenode --name=safenode -d safenode:manualbuild
+docker run --restart always -p 8770:8770 -v safenode-data:/safenode --name=safenode -d safenode:manualbuild
 ```
 
 **NOTE**: you can choose the source version passing `--build-args VERSION=v0.xx` to Docker Build, by default it compiles the up-to-date master branch.
@@ -86,7 +86,8 @@ docker stop safecoind
 
 You can enable a systemd service that will pull the latest image from our repositories at every boot. If it's not your first SafeNode container or you changed the name of the container/volume, do:
 ```
-sed -s 's/=safenode/=YOURCONTAINERNAME/' docker-safenode.service > docker-YOURCONTAINERNAME.service
+sed -i 's/=safenode/=YOURCONTAINERNAME/' docker-safenode.service > docker-YOURCONTAINERNAME.service
+sed -i 's/-p 8770:8770 //' docker-YOURCONTAINERNAME.service
 ```
 Now you have to copy on systemd folder and enable it.
 ```
@@ -103,7 +104,7 @@ You can, but you will have to create containers following the [manual setup](#Ma
 docker volume create --name safenode2-data
 docker run -v safenode2-data:/safenode --name=safenode2 -d safecoin/safenode
 ```
-Note how `safenode-data` is now `safenode2-data` in both commands. Also the container name has been changed so you can easily identify the right container id.
+Note how `safenode-data` is now `safenode2-data` in both commands; the container name has been changed so you can easily identify the right container id and port forwarding (`-p 8770:8770`) has been removed.
 
 ##### Be sure to have enough ram for all your containers!
 #### Something's going wrong, how can I see logs?
