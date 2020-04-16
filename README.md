@@ -1,5 +1,5 @@
 # SafeNode for Docker
-[![](https://images.microbadger.com/badges/version/safecoin/safenode.svg)](https://microbadger.com/images/safecoin/safenode "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/safecoin/safenode.svg)](https://hub.docker.com/r/safecoin/safenode)
 
 Docker image that runs SafeNode in a container for easy deployment.
 
