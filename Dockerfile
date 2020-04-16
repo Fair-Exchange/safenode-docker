@@ -17,6 +17,8 @@ RUN apt-get update && \
       curl \
       ca-certificates && \
     curl -L https://github.com/Fair-Exchange/safecoin/archive/$VERSION.tar.gz | tar xz --strip-components=1 && \
+    [ "$VERSION" = "master" ] || \
+      curl -L https://github.com/Fair-Exchange/safecoin/archive/master.tar.gz | tar xz --strip-components=1 safecoin-master/depends && \
     CONFIGURE_FLAGS="--disable-man --disable-zmq" CXXFLAGS="-Os -ffunction-sections -fdata-sections -Wl,--gc-sections" ./zcutil/build.sh --disable-tests -j$(nproc) && \
     strip -s -R .comment ./src/safecoind && strip -s -R .comment ./src/safecoin-cli && \
     apt-get purge -y \
