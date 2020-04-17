@@ -21,18 +21,6 @@ docker volume create --name safenode-data
 docker run --restart always -p 8770:8770 -v safenode-data:/safenode --name=safenode -d safecoin/safenode
 ```
 
-### Build from sources (expert users)
-```
-curl -L https://github.com/Fair-Exchange/safenode-docker/archive/master.tar.gz | tar xz
-cd safenode-docker-master/
-docker build --tag safenode:manualbuild .
-
-docker volume create --name safenode-data
-docker run --restart always -p 8770:8770 -v safenode-data:/safenode --name=safenode -d safenode:manualbuild
-```
-
-**NOTE**: you can choose the source version passing `--build-args VERSION=v0.xx` to Docker Build, by default it compiles the up-to-date master branch.
-
 ## Configure the container
 
 #### 1. Create a SafeNode Paper Wallet
