@@ -77,7 +77,7 @@ and send 1 SAFE to the that address, then send at least 10000 SAFE to the collat
 ---
 #### Use safecoin-cli
 ```
-docker exec safenode safecoin-cli
+docker exec safenode safecoin-cli <args>
 ```
 
 #### Create a wallet backup
@@ -104,12 +104,12 @@ systemctl enable --now docker-safenode.service
 
 ## FAQ
 #### I want to run multiple SafeNode on my Docker
-You can, but you will have to create containers following the [manual setup](#Manual-setup) and **creating a volume with a different name for each node**. For example you can run a second node with:
+You can, but you will have to create containers following the [manual setup](#Manual-setup) and **creating a volume for each node**. For example you can run a second node with:
 ```
 docker volume create --name safenode2-data
 docker run -v safenode2-data:/safenode --name=safenode2 -d safecoin/safenode
 ```
-Note how `safenode-data` is now `safenode2-data` in both commands; the container name has been changed so you can easily identify the right container id and port forwarding (`-p 8770:8770`) has been removed.
+Note how `safenode-data` is now `safenode2-data` in both commands; the container name has been changed so you can easily identify the right container id and port forwarding (`-p 8770:8770`) has been removed to avoid conflicts.
 
 ##### Be sure to have enough ram for all your containers!
 #### Something's going wrong, how can I see logs?
