@@ -8,6 +8,7 @@ Docker image that runs SafeNode in a container for easy deployment.
 #### [Install Docker](https://docs.docker.com/get-docker/)
 
 ### Fast setup
+**If you are on ARM you have to use manual setup with `safecoin/safenode:arm-beta` as image.**
 Run as root:
 ```
 curl https://raw.githubusercontent.com/Fair-Exchange/safenode-docker/master/boostrap-host.sh | sh
